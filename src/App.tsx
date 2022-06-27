@@ -12,7 +12,8 @@ import { Breadcrumb, Layout, Menu } from 'antd';
 import React, { useState } from 'react';
 
 // components
-import PostForm from "./components/PostForm";
+// import PostForm from "./components/PostForm";
+import FormList from "./components/FormList";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -60,10 +61,8 @@ const App: React.FC = () => {
             <Breadcrumb.Item>Các bước đăng tin</Breadcrumb.Item>
             <Breadcrumb.Item>Soạn tin đăng</Breadcrumb.Item>
           </Breadcrumb>
-          <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-            <h3>Soạn tin đăng</h3>
-            <PostForm/>
-          </div>
+          <h3>Soạn tin đăng</h3>
+            <FormList/>
         </Content>
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
       </Layout>
