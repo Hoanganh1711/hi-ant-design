@@ -1,26 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
     Form,
     Input,
     // Button,
     Radio,
-    Select,
-    // DatePicker,
+    // Select,
 } from 'antd';
+import 'antd/dist/antd.css';
 
 const options1 = [
     {
         label: 'Khoảng giá',
         value: 'Khoảng giá',
     },
-  ];
+];
 
-  const options2 = [
+const options2 = [
     {
         label: 'Khoảng diện tích',
         value: 'Khoảng diện tích',
     }
-  ];
+];
+
 
 const DescripForm = () => {
     const [value1, setValue1] = useState('Khoảng giá');
@@ -35,28 +36,39 @@ const DescripForm = () => {
         setValue2(value);
     };
 
+    const [form] = Form.useForm();
+
+    const onFinish = (values: any) => {
+      console.log(values);
+    };
+
     return (
         <div>
-            <Form>
+            <Form form={form} onFinish={onFinish}>
                 <h3 style={{ color: "blue" }}>II. Thông tin mô tả</h3>
 
-                <Form.Item label="Giá tiền (VNĐ)">
+                <Form.Item label="Giá tiền (VNĐ)"
+                    rules={[
+                        {
+                            required: true,
+                        }
+                    ]}
+                >
                     <div>
-                        <Input placeholder='Giá Min'/>
-                        <Radio value="Khoảng giá"/> <b>Giá thỏa thuận</b>
+                        <Input placeholder='Giá Min' />
+                        <Radio value={value1}/><b>Giá thỏa thuận</b>
                     </div>
-                    <div>
-                        <Radio.Group options={options1} onChange={onChange1} value={value1} optionType="button" />
-                    </div>
+
+                    <Radio.Group options={options1} onChange={onChange1} value={value1} optionType="button" />
                 </Form.Item>
 
                 <Form.Item label="Diện tích (m2)">
                     <div>
-                        <Input placeholder='Diện tích Min'/>
+                        <Input placeholder='Diện tích Min' />
                     </div>
-                    <div>
-                        <Radio.Group options={options2} onChange={onChange2} value={value2} optionType="button" />
-                    </div>
+
+                    <Radio.Group options={options2} onChange={onChange2} value={value2} optionType="button" />
+
                 </Form.Item>
             </Form>
         </div>
