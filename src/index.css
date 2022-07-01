@@ -15,3 +15,11 @@ code {
 .ant-form-item-control-input-content {
   display: flex;
 }
+
+.ck-editor__editable_inline {
+  height: 200px;
+}
+
+.ck.ck-reset.ck-editor.ck-rounded-corners {
+  width: 100%;
+}

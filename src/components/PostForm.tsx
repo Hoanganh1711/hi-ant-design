@@ -5,6 +5,8 @@ import {
   Button,
   Radio,
   Select,
+  Col,
+  Row
 } from 'antd';
 import Map from './Map';
 
@@ -77,7 +79,7 @@ const PostForm = () => {
     // console.log(data)
     setWardsInput(data.wards)
   }
-  
+
   const handleChangeCity = (e: any) => {
     districtsAPI(e)
   }
@@ -96,127 +98,133 @@ const PostForm = () => {
     form.resetFields();
   };
   return (
-    <>
+    <div style={{ backgroundColor: "#fff", padding: "20px 20px", borderRadius: 10 }}>
       <h2 style={{ color: "blue" }}>I. Thông tin cơ bản</h2>
+      <Row >
+        <Col span={12}>
+          <Form {...layout} form={form} onFinish={onFinish}
+            // labelCol={{ span: 4 }}
+            wrapperCol={{ span: 14 }}
+            layout="horizontal"
+            // style={{ width: "800px" }}
+          >
 
-      <div style={{display: "flex"}}>
-        <Form {...layout} form={form} onFinish={onFinish}
-        labelCol={{ span: 4 }}
-        wrapperCol={{ span: 14 }}
-        layout="horizontal"
-        style={{ width: "800px" }}
-        >
+            <Form.Item
+              label="Tên dự án"
+              name="Tên dự án"
+              rules={[
+                {
+                  required: true,
+                  message: "Nhập tên dự án"
+                },
+              ]}
+            >
+              <Input placeholder="Nhập tên dự án" />
+            </Form.Item>
 
-          <Form.Item
-            label="Tên dự án"
-            name="Tên dự án"
-            rules={[
-              {
-                required: true,
-                message: "Nhập tên dự án"
-              },
-            ]}
-          >
-            <Input placeholder="Nhập tên dự án" />
-          </Form.Item>
-          <Form.Item label="Loại hình"
-            name="Loại hình"
-            rules={[
-              {
-                required: true,
-                message: "Lựa chọn Loại hình"
-              },
-            ]}
-          >
-            <Radio.Group options={options} onChange={onChange} value={value} optionType="button" />
-          </Form.Item>
-          
-          <Form.Item label="Loại BĐS"
-            name="Loại BĐS"
-            rules={[
-              {
-                required: true,
-                message: "Lựa chọn loại BĐS"
-              },
-            ]}
-          >
-            <Select placeholder="--Loại BĐS--">
-              <Select.Option value="demo1">Nhà ở</Select.Option>
-              <Select.Option value="demo2">Chung cư</Select.Option>
-              <Select.Option value="demo3">Đất thổ cư</Select.Option>
-              <Select.Option value="demo4">Đất ruộng</Select.Option>
-            </Select>
-          </Form.Item>
-          <Form.Item label="Tỉnh/Thành Phố"
-            name="Thành phố"
-            rules={[
-              {
-                required: true,
-                message: "Chọn Thành phố"
-              },
-            ]}
-          >
-            <Select placeholder="Nhập tên Thành phố" onChange={(e) => handleChangeCity(e)}>
-              {citysInput.map((item: any, index) => {
-                return (
-                  <Option key={index} value={item.code}>{item.name}</Option>
-                )
-              })}
-            </Select>
-          </Form.Item>
+            <Form.Item label="Loại hình"
+              name="Loại hình"
+              rules={[
+                {
+                  required: true,
+                  message: "Lựa chọn Loại hình"
+                },
+              ]}
+            >
+              <Radio.Group options={options} onChange={onChange} value={value} optionType="button" />
+            </Form.Item>
 
-          <Form.Item label="Quận/Huyện"
-            name="Quận/Huyện"
-            rules={[
-              {
-                required: true,
-                message: "Chọn Quận/Huyện"
-              },
-            ]}
-          >
-            <Select placeholder="Nhập tên Quận/Huyện" onChange={(e) => handleChangeDistricts(e)}>
-              {districtsInput.map((item: any, index) => {
-                return (
-                  <Option key={index} value={item.code}>{item.name}</Option>
-                )
-              })}
-            </Select>
-          </Form.Item>
+            <Form.Item label="Loại BĐS"
+              name="Loại BĐS"
+              rules={[
+                {
+                  required: true,
+                  message: "Lựa chọn loại BĐS"
+                },
+              ]}
+            >
+              <Select placeholder="--Loại BĐS--">
+                <Select.Option value="demo1">Nhà ở</Select.Option>
+                <Select.Option value="demo2">Chung cư</Select.Option>
+                <Select.Option value="demo3">Đất thổ cư</Select.Option>
+                <Select.Option value="demo4">Đất ruộng</Select.Option>
+              </Select>
+            </Form.Item>
 
-          <Form.Item label="Xã/Phường"
-            name="Xã/Phường"
-          >
-            <Select placeholder="Nhập tên Xã/Phường">
-              {wardsInput.map((item: any, index) => {
-                return(
-                  <Option key={index} value={item.name}>{item.name}</Option>
-                )
-              })}
-            </Select>
-          </Form.Item>
+            <Form.Item label="Tỉnh/Thành Phố"
+              name="Thành phố"
+              rules={[
+                {
+                  required: true,
+                  message: "Chọn Thành phố"
+                },
+              ]}
+            >
+              <Select placeholder="Nhập tên Thành phố" onChange={(e) => handleChangeCity(e)}>
+                {citysInput.map((item: any, index) => {
+                  return (
+                    <Option key={index} value={item.code}>{item.name}</Option>
+                  )
+                })}
+              </Select>
+            </Form.Item>
 
-          <Form.Item label="Đường phố">
-            <Input placeholder='Nhập tên Đường phố' />
-          </Form.Item>
+            <Form.Item label="Quận/Huyện"
+              name="Quận/Huyện"
+              rules={[
+                {
+                  required: true,
+                  message: "Chọn Quận/Huyện"
+                },
+              ]}
+            >
+              <Select placeholder="Nhập tên Quận/Huyện" onChange={(e) => handleChangeDistricts(e)}>
+                {districtsInput.map((item: any, index) => {
+                  return (
+                    <Option key={index} value={item.code}>{item.name}</Option>
+                  )
+                })}
+              </Select>
+            </Form.Item>
 
-          <Form.Item label="Địa chỉ"
-            name="Địa chỉ"
-          >
-            <Input placeholder='Địa chỉ' />
-          </Form.Item>
-    
-          <Form.Item {...tailLayout}>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-            <Button htmlType="button" onClick={onReset}>
-              Reset
-            </Button>
-          </Form.Item>
-        </Form>
-        <Map/>
-      </div>
-    </>
+            <Form.Item label="Xã/Phường"
+              name="Xã/Phường"
+            >
+              <Select placeholder="Nhập tên Xã/Phường">
+                {wardsInput.map((item: any, index) => {
+                  return (
+                    <Option key={index} value={item.name}>{item.name}</Option>
+                  )
+                })}
+              </Select>
+            </Form.Item>
+
+            <Form.Item label="Đường phố">
+              <Input placeholder='Nhập tên Đường phố' />
+            </Form.Item>
+
+            <Form.Item label="Địa chỉ"
+              name="Địa chỉ"
+            >
+              <Input placeholder='Địa chỉ' />
+            </Form.Item>
+
+            <Form.Item {...tailLayout}>
+              <Button type="primary" htmlType="submit">
+                Submit
+              </Button>
+              <Button htmlType="button" onClick={onReset}>
+                Reset
+              </Button>
+            </Form.Item>
+          </Form>
+        </Col>
+        
+        <Col span={10}>
+          <Map />
+        </Col>
+      </Row>
+    </div>
   );
 }
 
