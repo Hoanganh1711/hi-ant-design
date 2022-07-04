@@ -75,13 +75,12 @@ const UploadImgForm = () => {
     return (
         <div style={{backgroundColor: "#fff", padding: 20, borderRadius: 10}}>
 
-            <h3 style={{color: "blue"}}>II. Thông tin hình ảnh</h3>
+            <h2 style={{color: "blue"}}>III. Thông tin hình ảnh</h2>
             <div style={{backgroundColor: "#f9fafb", border: "solid 2px #dedede" ,borderRadius: 10, textAlign: "center", padding: "20px 0" }}>
-                <div style={{ marginBottom: 50 }}>
+                <div style={{ marginBottom: 40 }}>
                     <p>
                         Tin đăng có hình ảnh thường hiệu quả hơn 59% tin đăng không có hình ảnh.
                     </p>
-                    (Kéo thả tới vị trí đầu tiên bên trái nếu bạn muốn làm ảnh đại diện)
                 </div>
 
                 <Upload

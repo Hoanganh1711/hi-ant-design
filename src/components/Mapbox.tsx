@@ -1,6 +1,6 @@
 import React from "react";
 
-const Map = () => {
+const Mapbox = () => {
     return (
         <iframe
             title="map"
@@ -11,4 +11,4 @@ const Map = () => {
     )
 }
 
-export default Map
+export default Mapbox

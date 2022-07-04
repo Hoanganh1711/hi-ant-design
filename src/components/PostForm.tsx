@@ -8,10 +8,13 @@ import {
   Col,
   Row
 } from 'antd';
-import Map from './Map';
+import Map from './Mapbox';
 
 // const { RangePicker } = DatePicker;
 // const { TextArea } = Input;
+
+
+
 const { Option } = Select;
 
 const layout = {
@@ -51,9 +54,13 @@ const PostForm = () => {
   const [districtsInput, setDistrictsInput] = useState([])
   const [wardsInput, setWardsInput] = useState([])
 
+  const [inputedCity, setInputedCity] = useState("")
+
+
   const onChange = ({ target: { value } }: any) => {
     setValue(value);
   };
+
 
   //Xử lý lấy dữ liệu từ API thao tác Form
   useEffect(() => {
@@ -63,7 +70,6 @@ const PostForm = () => {
   const cityAPI = async () => {
     const response = await fetch(`https://provinces.open-api.vn/api/`)
     const data = await response.json()
-    // console.log(data)
     setCitysInput(data)
   }
 
@@ -97,6 +103,10 @@ const PostForm = () => {
   const onReset = () => {
     form.resetFields();
   };
+
+
+
+
   return (
     <div style={{ backgroundColor: "#fff", padding: "20px 20px", borderRadius: 10 }}>
       <h2 style={{ color: "blue" }}>I. Thông tin cơ bản</h2>
@@ -106,7 +116,6 @@ const PostForm = () => {
             // labelCol={{ span: 4 }}
             wrapperCol={{ span: 14 }}
             layout="horizontal"
-            // style={{ width: "800px" }}
           >
 
             <Form.Item
@@ -206,7 +215,7 @@ const PostForm = () => {
             <Form.Item label="Địa chỉ"
               name="Địa chỉ"
             >
-              <Input placeholder='Địa chỉ' />
+              <Input placeholder='Địa chỉ'/>
             </Form.Item>
 
             <Form.Item {...tailLayout}>
@@ -219,7 +228,7 @@ const PostForm = () => {
             </Form.Item>
           </Form>
         </Col>
-        
+
         <Col span={10}>
           <Map />
         </Col>
