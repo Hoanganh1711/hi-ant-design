@@ -8,11 +8,8 @@ import {
     Select,
 } from 'antd';
 import 'antd/dist/antd.css';
-import { Editor } from '@tinymce/tinymce-react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import '../index.tsx';
-
 
 // const { Option } = Select;
 
