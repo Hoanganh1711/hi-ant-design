@@ -50,7 +50,7 @@ const Sidebar = () => {
 
     return (
         <>
-            <Sider collapsible collapsed={collapsed} onCollapse={value => setCollapsed(value)}>
+            <Sider style={{}} collapsible collapsed={collapsed} onCollapse={value => setCollapsed(value)}>
                 <Menu theme="dark" defaultSelectedKeys={[location.pathname]} mode="inline">
                     {items.map((item) =>
                         !item.children ? (
