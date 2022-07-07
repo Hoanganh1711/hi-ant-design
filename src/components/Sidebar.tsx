@@ -32,7 +32,7 @@ const Sidebar = () => {
             key: "form",
             icon: <FormOutlined />,
             title: "Đăng tin",
-            link: "./FormList"
+            link: "./PostNewForm"
         },
         {
             key: "userManagement",

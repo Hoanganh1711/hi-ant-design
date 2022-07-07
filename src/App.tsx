@@ -1,18 +1,12 @@
-import {
-  HomeFilled,
-  FormOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu } from 'antd';
-import React, { useState } from 'react';
+import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 import { Route, Routes } from 'react-router-dom';
-import FormList from './components/UpNewForm/FormList';
+import PostNewForm from './components/PostNewForm';
 import Sidebar from './components/Sidebar';
 import User from './components/UsersManagement/PostedManager';
 import './App.css';
 
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 
 const App = () => {
   // const [collapsed, setCollapsed] = useState(false);
@@ -26,7 +20,7 @@ const App = () => {
         <Content style={{ margin: '0 16px' }}>
           <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
             <Routes>
-              <Route path="/FormList" element={<FormList />} />
+              <Route path="/PostNewForm" element={<PostNewForm />} />
               <Route path="/User" element={<User />} />
             </Routes>
           </div>
